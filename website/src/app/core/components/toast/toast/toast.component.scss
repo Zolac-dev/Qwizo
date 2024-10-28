@@ -1,0 +1,25 @@
+.container{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: rgba($color: #FF0000, $alpha: 0.8);
+	gap: 16px;
+	border-radius: 5px;
+	padding: 12px 12px 12px 16px;
+
+	.icon{
+
+	}
+
+	.text{
+		flex-grow: 1;
+	}
+
+	.close{
+		cursor: pointer;
+	}
+
+
+
+}
+

@@ -1,0 +1,79 @@
+{
+  "name": "qwizo",
+  "productName": "Qwizo",
+  "displayName": "Qwizo",
+  "version": "1.0.0",
+  "main": "app.mjs",
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build:app": "tsc",
+    "build:website-production": "cd website && ng build --configuration production",
+    "build:electron": "npm run build:website-production && npm run build:app && electron-builder build"
+  },
+  "author": "Zolac",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/uuid": "^10.0.0",
+    "@types/ws": "^8.5.12",
+    "electron": "^33.0.2",
+    "electron-builder": "^25.1.8",
+    "nodemon": "^3.1.7",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "asar": "^3.2.0",
+    "axios": "^1.7.7",
+    "chokidar": "^4.0.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "electron-store": "^10.0.0",
+    "express": "^4.21.1",
+    "glob": "^11.0.0",
+    "minimatch": "^10.0.1",
+    "socket.io": "^4.8.1",
+    "uuid": "^10.0.0",
+    "ws": "^8.18.0"
+  },
+  "build": {
+    "appId": "Qwizo",
+    "artifactName": "${productName}.${ext}",
+    "asar": true,
+    "files": [
+      {
+        "from": "dist",
+        "to": ""
+      },
+      {
+        "from": "website/dist",
+        "to": "public"
+      },
+      {
+        "from": "public/widgets",
+        "to": "public/widgets"
+      },
+      "package.json"
+    ],
+    "win": {
+      "icon": "public/favicon.ico",
+      "electronLanguages": [
+        "fr",
+        "en"
+      ],
+      "target": [
+        "portable"
+      ]
+    },
+    "directories": {
+      "output": "electron-dist"
+    },
+    "portable": {
+      "useZip": true
+    },
+    "compression": "normal"
+  }
+}

@@ -1,0 +1,6 @@
+{
+	"verbose": false,
+	"watch": ["dist"],
+	"ext": "js,ts,mjs,mts,json",
+	"exec" : "cd dist && electron app.mjs"
+}

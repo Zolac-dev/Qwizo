@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    padding: 16px;
+    gap: 16px;
+    height: 100%;
+
+}
+
+.left{
+    flex-grow: 1;
+    height: 100%;
+    // overflow: hidden;
+}
+
+.right{
+    flex-basis: 20vw;
+    display: flex;
+    // overflow: hidden;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+}
+
+::ng-deep app-user-card{
+    flex-grow: 1;
+    overflow: hidden;
+}

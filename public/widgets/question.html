@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+
+        <style>
+            html,body{
+                font-family: 'Quicksand' !important;
+            }
+
+            *{
+                box-sizing: border-box;
+            }
+
+            #question{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: end;
+                font-size: 1.5rem;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="question"></div>
+
+
+        <script type="module">
+            let questionContainer = document.getElementById("question")
+
+            import { io } from "https://cdn.socket.io/4.8.0/socket.io.esm.min.js";
+            console.log(`${window.location.origin}/api/socket.io`)
+            const socket = io(window.location.origin,{
+                path : "/api/socket.io"
+            });
+            socket.on("question:update",(question)=>{
+                questionContainer.innerText = question
+            })
+        </script>
+    </body>
+</html>

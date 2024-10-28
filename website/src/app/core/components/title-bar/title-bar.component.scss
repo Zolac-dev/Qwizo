@@ -1,0 +1,41 @@
+.container{
+	display: flex;
+	height: 30px;
+	align-items: center;
+	justify-content: flex-end;
+	// background-color: red;
+	-webkit-app-region: drag;
+	user-select: none;
+
+}
+
+.title{
+	flex-grow: 1;
+	color : var(--secondary-color);
+	font-weight: bold;
+	font-size: 0.90rem;
+	padding-left: 1rem;
+}
+
+i{
+	height: 100%;
+    width: 46px;
+    font-size: 16px !important;
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+	color : #F0F0F0;
+	-webkit-app-region: no-drag;
+    cursor: pointer;
+
+
+	&:hover{
+		background-color: var(--primary-color-l1);
+	}
+}
+
+.warning-button{
+	&:hover{
+		background-color: #dd7373;
+	}
+}

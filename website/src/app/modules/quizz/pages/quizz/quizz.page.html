@@ -1,0 +1,14 @@
+<div class="container">
+
+    <div class="left">
+        <app-users-table (onClickUser)="selectUser($event)"></app-users-table>
+    </div>
+    <div class="right">
+        @if (!twitch.connected) { <app-twitch-card></app-twitch-card> }
+        <app-widgets-card></app-widgets-card>
+        <app-question-card></app-question-card>
+        @if(userSelected){
+            <app-user-card [user]="userSelected"></app-user-card>
+        }
+    </div>
+</div>

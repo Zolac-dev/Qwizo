@@ -1,0 +1,129 @@
+.container{
+    // border: 2px solid var(--primary-color);
+    // box-shadow: 2px 2px 5px var(--primary-color);
+    background-color: var(--widget-bg);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    min-width: 300px;
+    min-height: 300px;
+    gap: 16px;
+    height: 100%;
+    box-shadow: 2px 2px 15px rgb(22, 22, 22);
+}
+
+.title{
+    width: 100%;
+    color: var(--primary-color);
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: 2px;
+}
+
+
+.actions{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    gap: 16px;
+
+    button{
+        width: 150px;
+    }
+
+    // button{
+    //     width: ;
+    // }
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: auto;
+    // border: 1px solid var(--background);
+
+    .header{
+        background-color: var(--table-header) !important;
+        color: white;
+        font-size: 1em !important;
+        // font-weight: bold;
+    }
+
+    .row{
+        font-size: 0.9em;
+        display: grid;
+        grid-template-columns: 150px 110px 1fr 100px;
+
+        background-color: var(--table-row-2);
+        &:nth-child(2n){
+            background-color: var(--table-row-1);
+        }
+
+        &>*{
+            padding: 6px 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .name{
+            .click{
+                cursor: pointer;
+
+            }
+        }
+
+        .score{
+            // justify-content: center;
+            // gap: 4px;
+            justify-content: center;
+
+            button{
+                padding: 1px;
+                width: 24px;
+                height: 24px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                background-color: transparent;
+                color : var(--primary-color);
+
+                &:hover{
+                    background-color: none;
+                }
+
+                &:active{
+                    color : var(--primary-color-text);
+                    background-color: var(--primary-color);
+                }
+            }
+
+            .value{
+                flex-grow: 1;
+                text-align: center;
+            }
+        }
+
+        .validate{
+            display: flex;
+            justify-content: center;
+
+            button{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 20px;
+                height: 20px;
+                border: none;
+                background-color: #50883a;
+                color: white;
+
+                &.remove{
+                    background-color: #883a3a !important;
+                }
+            }
+        }
+    }
+}

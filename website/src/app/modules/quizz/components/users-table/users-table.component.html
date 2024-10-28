@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="title">List Users</div>
+    <div class="actions">
+        <button (click)="resetScore()">Reset Score</button>
+        <button (click)="resetValidate()">Clear Validate</button>
+    </div>
+
+    <div class="list">
+            <div class="row header">
+                <div class="name">Name</div>
+                <div class="score">Score</div>
+                <div class="lastMessage">Last Message</div>
+                <div class="validate">Validate </div>
+            </div>
+        @for (user of listUsers; track $index) {
+            <div class="row">
+                <div class="name">
+                    <div class="click" (click)="clickUser(user)">{{user.name}}</div>
+                </div>
+                <div class="score">
+                    <button (click)="addScore(user.id,1)"><fa-icon [icon]="icons.plus"></fa-icon></button>
+                    <div class="value">{{user.score}}</div>
+                    <button (click)="addScore(user.id,-1)"><fa-icon [icon]="icons.minus"></fa-icon></button>
+                </div>
+                <div class="lastMessage">{{user.messages[0]?.message}}</div>
+                <div class="validate">
+                    <button [ngClass]="{'remove': !user.validate}" (click)="switchValidate(user.id)">
+                        @if (user.validate) { <fa-icon [icon]="icons.validate"></fa-icon>
+                        }@else{ <fa-icon [icon]="icons.unvalidate"></fa-icon>}
+                    </button>
+                </div>
+                
+                
+            </div>
+        }
+    </div>
+   
+</div>

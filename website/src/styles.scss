@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root{
+    --background : #0F0F0F;
+	--primary-color : #e6b56d;
+	--primary-color-l1 : #e9c38b;
+	--primary-color-l2 : #f3d5a8;
+	--primary-color-d1 : #b88840;
+	--primary-color-d2 : #8d652a;
+	--primary-color-text : #000000;
+	--color: #ffffff;
+	--widget-bg : #2c2c35;
+	--widget-shadow : #353535;
+
+	--widget-bg-l1 : #4f4f57;
+
+	--table-header : var(--background);
+	--table-row-1 : #2c2c35;
+	--table-row-2 : #353547;
+
+    --gray-1 : #f1f1f1;
+	--gray-2 : #e9e9e9;
+	--gray-3 : #cccccc;
+	--gray-4 : #a3a3a3;
+	--gray-5 : #7c7c7c;
+	--gray-6 : #555555;
+    --tippy-bg : #292929;
+
+    // $error-color : ;
+}
+
+*{
+	box-sizing: border-box;
+
+}
+
+
+
+
+
+html{
+	font-family: 'Quicksand' !important;
+
+}
+
+html,
+body{
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	min-height: 100%;
+	color : var(--color);
+	// position: fixed;
+	// width: 100%;
+}
+
+body{
+	border-radius: 100px;
+	background-color : var(--background);
+
+	
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+	width: 	8.5px;
+	border-radius: 4.25px;
+	-webkit-appearance: none;
+	// -webkit-overflow-scrolling: auto !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--primary-color-darkess);
+	box-shadow: inset 0 0 7px rgb(70, 70, 70);
+	border-radius: 4.25px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #727272;
+	border-radius: 4.25px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #727272;
+}
+
+
+
+.tippy-box[data-theme~='quizz'] {
+	background-color: var(--tippy-bg);
+    // border-color: var(--gray-3);
+	// border: 1px solid var(--gray-3);
+	color: var(--color);
+	padding: 6px;
+	// border-radius: 6px;
+    font-size: 12px;
+
+	&[data-placement^='top'] > .tippy-arrow::before {
+		border-top-color: var(--tippy-bg);
+	}
+
+	&[data-placement^='bottom'] > .tippy-arrow::before {
+		border-bottom-color: var(--tippy-bg);
+	}
+
+	&[data-placement^='left'] > .tippy-arrow::before {
+		border-left-color: var(--tippy-bg);
+	}
+	
+	&[data-placement^='right'] > .tippy-arrow::before {
+		border-right-color: var(--tippy-bg);
+	}
+
+
+}
+

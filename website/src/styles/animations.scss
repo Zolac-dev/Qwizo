@@ -1,0 +1,57 @@
+@keyframes loading-border-long {
+	0%{
+		border-top: 0%;
+		border-right: 0%;
+		border-bottom: 0%;
+		border-left: 0%;	
+	}
+	12.5%{
+		border-top: 0%;
+		border-right: 100%;
+		border-bottom: 0%;
+		border-left: 0%;	
+	}
+	25%{
+		border-top: 0%;
+		border-right: 100%;
+		border-bottom: 100%;
+		border-left: 0%;	
+	}
+	37.5%{
+		border-top: 0%;
+		border-right: 100%;
+		border-bottom: 100%;
+		border-left: 100%;	
+	}
+	50%{
+		border-top: 100%;
+		border-right: 100%;
+		border-bottom: 100%;
+		border-left: 100%;	
+	}
+	62.5%{
+		border-top: 100%;
+		border-right: 0%;
+		border-bottom: 100%;
+		border-left: 100%;	
+	}
+	75%{
+		border-top: 100%;
+		border-right: 0%;
+		border-bottom: 0%;
+		border-left: 100%;	
+	}
+	87.5%{
+		border-top: 100%;
+		border-right: 0%;
+		border-bottom: 0%;
+		border-left: 0%;	
+	}
+
+	100%{
+		border-top: 0%;
+		border-right: 0%;
+		border-bottom: 0%;
+		border-left: 0%;	
+	}
+}

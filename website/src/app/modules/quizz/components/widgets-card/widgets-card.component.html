@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="title">Widgets</div>
+    <div class="widgets">
+        @for (widget of widgets | keyvalue; track $index) {
+            <div class="widget">
+                <div class="text">{{widget.key}}</div>
+                <fa-icon [icon]="icons.copy" (click)="copy(widget.value)" tippy [tippyOptions]="{content : 'copied', trigger : 'click'}"></fa-icon>
+            </div>
+        }
+       
+    </div>
+    
+    
+</div>

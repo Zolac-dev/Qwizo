@@ -1,0 +1,9 @@
+<div class="container">
+	<i class="codicon codicon-chrome-minimize" (click)="minimize()"></i>
+    @if (windowService.maximized) {
+        <i class="codicon codicon-chrome-restore" (click)="unmaximize()"></i>
+    }@else {
+        <i class="codicon codicon-chrome-maximize" (click)="maximize()"></i>
+    }
+	<i class="codicon codicon-chrome-close warning-button" (click)="close()"></i>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="title">User</div>
+    <div class="top">
+        <div class="name">{{user.name}}</div>
+        <div class="score">
+            <button (click)="addScore(user.id,1)"><fa-icon [icon]="icons.plus"></fa-icon></button>
+            <div class="value">{{user.score}}</div>
+            <button (click)="addScore(user.id,-1)"><fa-icon [icon]="icons.minus"></fa-icon></button>
+        </div>
+        <button class="validate" [ngClass]="{'remove': !user.validate}" (click)="switchValidate(user.id)">
+            @if (user.validate) { <fa-icon [icon]="icons.validate"></fa-icon>
+            }@else{ <fa-icon [icon]="icons.unvalidate"></fa-icon>}
+        </button>
+    </div>    
+
+    <div class="messages">
+        <div class="title">Messages</div>
+        <div class="list">
+            @for (message of user.messages; track $index) {
+                <div class="message">
+                    <div class="date">{{message.date | date : "hh:mm"}}</div>
+                    <div class="text">{{message.message}}</div>
+                </div>
+            }
+        </div>
+       
+    </div>
+</div>

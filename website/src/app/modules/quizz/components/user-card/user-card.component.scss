@@ -1,0 +1,135 @@
+.container{
+    // border: 2px solid var(--primary-color);
+    // box-shadow: 2px 2px 5px var(--widget-shadow);
+    background-color: var(--widget-bg);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    min-width: 150px;
+    min-height: 150px;
+    gap: 16px;
+    box-shadow: 2px 2px 15px rgb(22, 22, 22);
+    max-height: 100%;
+    flex-grow: 1;
+
+    &>.title{
+        width: 100%;
+        color: var(--primary-color);
+        font-family: "Orbitron", sans-serif;
+        letter-spacing: 2px;
+    }
+
+    .top{
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+
+        .name{
+            // font-weight: bold;
+            flex-grow: 1;
+        }
+
+
+        .validate{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            border: none;
+            background-color: #50883a;
+            color: white;
+        
+            &.remove{
+                background-color: #883a3a !important;
+            }
+        }
+    }
+}
+
+
+// .rowScore{
+
+//     display: flex;
+//     gap: 16px;
+
+//     .title{
+//         // color: var(--primary-color);
+//         font-style: italic;
+//     }
+    .score{
+        display: flex;
+        justify-content: center;
+        flex-basis: 80px;
+    
+        button{
+            padding: 1px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            background-color: transparent;
+            color : var(--primary-color);
+    
+            &:hover{
+                background-color: none;
+            }
+    
+            &:active{
+                color : var(--primary-color-text);
+                background-color: var(--primary-color);
+            }
+        }
+    
+        .value{
+            flex-grow: 1;
+            text-align: center;
+        }
+    }
+// }
+
+.messages{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    overflow: hidden;
+
+    .title{
+        font-style: italic;
+        font-size: 0.8em;
+        
+    }
+
+    .list{
+        background-color: var(--background);
+        font-size: 0.8em;
+        padding: 8px;
+        gap: 12px;
+        overflow: auto;
+        height: 100%;
+        flex-grow: 1;
+
+        .message{
+            display: flex;
+            gap: 8px;
+
+            .date{
+                flex-basis: 36px;
+                color: var(--primary-color-l2);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+

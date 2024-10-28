@@ -1,0 +1,176 @@
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+
+        <style>
+            html,body{
+                font-family: 'Quicksand' !important;
+                padding: 0;
+                margin: 0;
+            }
+
+            /* body{
+                padding-left: 2px;
+            } */
+
+            *{
+                box-sizing: border-box;
+            }
+
+          
+
+            #ranks{
+
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+            }
+
+            .user{
+                display: flex;
+                position: relative;
+                width: 100%;
+                align-items: center;
+                height: 100px;
+                /* min-height: 300px; */
+                /* flex-grow: 1; */
+
+            }
+
+            .base{
+                width: 2px;
+                height: 100%;
+                background-color: black;
+            }
+
+            .right{
+
+                height: 80px;
+                transition: 1s all ease-in-out;
+            }
+
+            .bar{
+                position: relative;
+                /* top: 10px; */
+                height: 60px;
+                border-radius: 0 30px 30px 0;
+                padding: 4px 32px 4px 4px;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                transition: 1s all ease-out;
+            }
+
+            .name{
+                text-align: right;
+                padding-right: 25px;
+                padding-left: 5px;
+                margin-bottom: 4px;
+                font-weight: bold;
+                /* width: 100%; */
+                /* overflow: hidden; */
+                transition: 1s all ease-in-out;
+            }
+
+            .score{
+                font-weight: bold;
+
+            }
+        </style>
+    </head>
+    <body>
+        <template id="template">
+            <div class="user">
+                <div class="base"></div>
+                <div class="right">
+                    <div class="name"></div>
+
+                    <div class="bar">
+                        <div class="score"></div>
+                    </div>
+                </div>
+                
+            </div>
+        </template>
+
+        <div id="ranks">
+
+        </div>
+
+
+        <script type="module">
+            const urlParams = new URLSearchParams(window.location.search);
+            const nbRank = urlParams.get('nb')??5
+            let users = []
+            // let templates = []
+            const templateRef = document.getElementById("template")
+            let questionContainer = document.getElementById("question")
+            const ranksContainer = document.getElementById("ranks")
+
+            for(let i=0; i < nbRank; i++){
+                console.log(templateRef)
+                let template = templateRef.content.cloneNode(true)
+                // templates.push(template)
+                ranksContainer.appendChild(template)
+            }
+
+            import { io } from "https://cdn.socket.io/4.8.0/socket.io.esm.min.js";
+            console.log(`${window.location.origin}/api/socket.io`)
+            const socket = io(window.location.origin,{
+                path : "/api/socket.io"
+            });
+
+
+            
+
+            socket.emit("users:get",(usersList)=>{
+                for(let user of usersList){
+                    users.push({ id: user.id, name : user.name, score : user.score })
+                }
+                updateDisplay()
+            })
+
+            socket.on("user:new",(user)=>{
+                users.push({ id: user.id, name : user.name, score : user.score })
+                updateDisplay()
+            })
+
+            socket.on("user:update",(user)=>{
+                let u = users.find((u)=>u.id == user.id)
+                if(u){
+                    u.score = user.score
+                    updateDisplay()
+                }
+                
+            })
+
+            function updateDisplay(){
+                users.sort((a,b)=>b.score-a.score)
+                for(let i= 0; i < Math.min(ranksContainer.children.length,users.length) ; i++ ){
+                    let obj = ranksContainer.children[i]
+                    let percentage = users[i].score <= 0 ? "64px" : `${users[i].score/users[0].score  * 100}%`
+                    let bar = obj.getElementsByClassName("bar")[0]
+                    bar.style.background=stringToColour(users[i].name)
+                    obj.getElementsByClassName("right")[0].style.width=percentage
+                    obj.getElementsByClassName("name")[0].innerText = users[i].name
+                    obj.getElementsByClassName("score")[0].innerText = users[i].score
+                }
+                
+            }
+
+            function stringToColour(str){
+                let hash = 0;
+                str.split('').forEach(char => {
+                    hash = char.charCodeAt(0) + ((hash << 5) - hash)
+                })
+                let colour = '#'
+                for (let i = 0; i < 3; i++) {
+                    const value = (hash >> (i * 8)) & 0xff
+                    colour += value.toString(16).padStart(2, '0')
+                }
+                return colour
+            }
+        </script>
+    </body>
+</html>

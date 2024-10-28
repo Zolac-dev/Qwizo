@@ -1,0 +1,29 @@
+<form class="container" [formGroup]="form" (ngSubmit)="save()">
+    <div class="module">
+        <div class="title">Server</div>
+        <div class="input">
+            <label>Port</label>
+            <input type="text" placeholder="Ex : 3000" formControlName="server_port">
+        </div>
+        <div class="input">
+            <label>Nb Messages Saved</label>
+            <input type="text" placeholder="Ex : 5" formControlName="users_message_max">
+        </div>
+    </div>
+    <div class="module">
+        <div class="title">Twitch</div>
+        <div class="input wide">
+            <label>Broadcaster ID</label>
+            <input type="text" placeholder="Ex : 854254789" formControlName="twitch_broadcast_id">
+        </div>
+        <div class="input">
+            <label>Bot ID</label>
+            <input type="text" placeholder="Ex : ydazefdq4dqdaedsq5daz4e5dqs1" formControlName="twitch_bot_id">
+        </div>
+        <div class="input">
+            <label>Bot Secret</label>
+            <input type="password" placeholder="Ex : ydazefdq4dqdaedsq5daz4e5dqs1" formControlName="twitch_bot_secret">
+        </div>
+    </div>
+    <button [disabled]="!form.valid" [ngClass]="{'saving': saving}">{{ saving? "Saving...":"Save"}}</button>
+</form>
